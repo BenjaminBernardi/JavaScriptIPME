@@ -34,7 +34,7 @@ exo1.innerHTML = "Bonjour, ceci est un nouveau texte.";
 
 let exo2 = document.querySelectorAll("h2");
 for (let i = 0; i < exo2.length; i++) {
-    exo2[i].innerHTML += " - Important";
+  exo2[i].innerHTML += " - Important";
 }
 
 /* Exercice 3 */
@@ -64,7 +64,7 @@ exo6.innerHTML = "Bienvenue sur la page !";
 /* Exercice 7 */
 
 let exo7 = document.querySelector("#contenu");
-exo7.innerHTML = "<h3>Nouveau titre</h3>\n<p>Nouveau paragraphe</p>"
+exo7.innerHTML = "<h3>Nouveau titre</h3>\n<p>Nouveau paragraphe</p>";
 
 /* Exercice 8 */
 
@@ -77,13 +77,12 @@ exo8List[exo8List.length - 1].remove();
 let exo9 = document.querySelector("[data-super-div]");
 let exo9List = exo9.querySelectorAll("p");
 for (i = 0; i < exo9List.length; i++) {
-    if (exo9List[i].innerHTML.includes("pokemon")) {
-        exo9List[i].remove();
-    }
+  if (exo9List[i].innerHTML.includes("pokemon")) {
+    exo9List[i].remove();
+  }
 }
 
 /* Tuer le chat */
-
 
 /* //je récupere la div et je lui ajoute un evenement au click
 let div = document.querySelector('.test');
@@ -95,3 +94,26 @@ div.addEventListener('click', () => {
 // exemple changer un src dans une image !!
 let lien = document.querySelector('#lien');
 lien.href = "https://facebook.fr"; */
+
+let catLife = 100;
+let userPower = 10;
+
+let displayUserPower = document.querySelector(".display-user-power");
+let displayCatLife = document.querySelector(".display-cat-life");
+const catLifeString = displayCatLife.innerHTML;
+let fightCat = document.querySelector(".fight-cat");
+
+displayCatLife.innerHTML += catLife;
+
+fightCat.addEventListener("click", () => {
+  catLife -= userPower;
+  if (catLife > 0) {
+    displayCatLife.innerHTML = "";
+    displayCatLife.innerHTML = catLifeString + catLife;
+  } else {
+    alert("Vous êtes un monstre !");
+    displayCatLife.innerHTML = catLifeString + catLife;
+  }
+});
+
+displayUserPower.innerHTML += userPower;
