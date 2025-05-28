@@ -1,3 +1,14 @@
+.texte-todo {
+    margin: 0.1rem;
+}
+
+.ajouter-todo, .supprimer-tout {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    margin: .1rem;
+}
+
 .mes-todo {
     padding: 0;
 }
