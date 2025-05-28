@@ -110,11 +110,16 @@ fightCat.addEventListener("click", () => {
   if (catLife > 0) {
     displayCatLife.innerHTML = "";
     displayCatLife.innerHTML = catLifeString + catLife;
-  } else if (catLife === 0) {
+  } else if (catLife <= 0) {
     alert("Vous êtes un monstre !");
     displayCatLife.innerHTML = catLifeString + catLife;
     fightCat.src = "assets/explosion.gif";
+    setTimeout(gifTimeout, 3000);
   }
 });
 
 displayUserPower.innerHTML += userPower;
+
+function gifTimeout() {
+  fightCat.remove();
+}
