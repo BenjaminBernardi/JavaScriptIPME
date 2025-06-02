@@ -4,6 +4,8 @@ let inputFirstName = document.querySelector(".prenom");
 let inputAge = document.querySelector(".age");
 let inputGenre = document.querySelectorAll(".genre");
 let inputProfession = document.querySelector(".select-profession");
+let inputRegion = document.querySelector(".select-region");
+let inputHobbies = document.querySelectorAll(".hobbies");
 let displayCard = document.querySelector(".card");
 
 form.addEventListener("submit", (e) => {
@@ -16,6 +18,8 @@ function createCard() {
   createAge();
   createGenre();
   createProfession();
+  createRegion();
+  createHobbies();
 }
 
 function createName() {
@@ -25,9 +29,11 @@ function createName() {
 }
 
 function createAge() {
-  let newP = document.createElement("p");
-  newP.innerHTML = "Age : " + inputAge.value + " ans";
-  displayCard.append(newP);
+  if (inputAge.value > 0) {
+    let newP = document.createElement("p");
+    newP.innerHTML = "Age : " + inputAge.value + " ans";
+    displayCard.append(newP);
+  }
 }
 
 function createGenre() {
@@ -47,4 +53,25 @@ function createProfession() {
     newP.innerHTML = "Profession : " + inputProfession.value;
     displayCard.append(newP);
   }
+}
+
+function createRegion() {
+  if (inputRegion.value.length > 0) {
+    let newP = document.createElement("p");
+    newP.innerHTML = "Région : " + inputRegion.value;
+    displayCard.append(newP);
+  }
+}
+
+function createHobbies() {
+  let newP = document.createElement("p");
+  newP.innerHTML = "Hobbies : ";
+  let hobbiesLength = inputHobbies.length;
+  for (i = 0; i < hobbiesLength; i++) {
+    if (inputHobbies[i].checked) {
+      newP.innerHTML += inputHobbies[i].value + ", ";
+    }
+  }
+  newP.innerHTML = newP.innerHTML.slice(0, -2);
+  displayCard.append(newP);
 }
