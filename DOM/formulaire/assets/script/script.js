@@ -2,6 +2,7 @@ let form = document.querySelector(".formulaire-profil");
 let inputLastName = document.querySelector(".nom");
 let inputFirstName = document.querySelector(".prenom");
 let inputAge = document.querySelector(".age");
+let inputGenre = document.querySelectorAll(".genre");
 let displayCard = document.querySelector(".card");
 
 form.addEventListener("submit", (e) => {
@@ -14,6 +15,7 @@ function createCard() {
 
     createName();
     createAge();
+    createGenre();
 
 }
 
@@ -29,5 +31,7 @@ function createAge() {
     displayCard.append(newP);
 }
 
-
+function createGenre() {
+    
+}
 
