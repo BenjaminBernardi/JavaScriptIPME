@@ -6,6 +6,7 @@ let inputGenre = document.querySelectorAll(".genre");
 let inputProfession = document.querySelector(".select-profession");
 let inputRegion = document.querySelector(".select-region");
 let inputHobbies = document.querySelectorAll(".hobbies");
+let inputLinkedIn = document.querySelector(".linkedin");
 let displayCard = document.querySelector(".card");
 
 form.addEventListener("submit", (e) => {
@@ -20,6 +21,7 @@ function createCard() {
   createProfession();
   createRegion();
   createHobbies();
+  createLinkedIn();
 }
 
 function createName() {
@@ -64,14 +66,33 @@ function createRegion() {
 }
 
 function createHobbies() {
-  let newP = document.createElement("p");
-  newP.innerHTML = "Hobbies : ";
+  if (checkboxNotEmpty()) {
+    let newP = document.createElement("p");
+    newP.innerHTML = "Hobbies : ";
+    let hobbiesLength = inputHobbies.length;
+    for (i = 0; i < hobbiesLength; i++) {
+      if (inputHobbies[i].checked) {
+        newP.innerHTML += inputHobbies[i].value + ", ";
+      }
+    }
+    newP.innerHTML = newP.innerHTML.slice(0, -2);
+    displayCard.append(newP);
+  }
+}
+
+function createLinkedIn() {
+  if (inputLinkedIn.value.length > 0) {
+    let newP = document.createElement("p");
+    newP.innerHTML = "LinkedIn : " + inputLinkedIn.value;
+    displayCard.append(newP);
+  }
+}
+
+function checkboxNotEmpty() {
   let hobbiesLength = inputHobbies.length;
   for (i = 0; i < hobbiesLength; i++) {
     if (inputHobbies[i].checked) {
-      newP.innerHTML += inputHobbies[i].value + ", ";
+      return true;
     }
   }
-  newP.innerHTML = newP.innerHTML.slice(0, -2);
-  displayCard.append(newP);
 }
