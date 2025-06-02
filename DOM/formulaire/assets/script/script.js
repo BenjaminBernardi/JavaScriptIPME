@@ -83,7 +83,11 @@ function createHobbies() {
 function createLinkedIn() {
   if (inputLinkedIn.value.length > 0) {
     let newP = document.createElement("p");
-    newP.innerHTML = "LinkedIn : " + inputLinkedIn.value;
+    newP.innerHTML = "LinkedIn : ";
+    let newA = document.createElement("a");
+    newA.innerHTML = inputLinkedIn.value;
+    newA.href = inputLinkedIn.value;
+    newP.append(newA);
     displayCard.append(newP);
   }
 }
