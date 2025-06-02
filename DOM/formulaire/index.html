@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire Profil</title>
+    <script defer src="./assets/script/script.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Formulaire Profil</h1>
+      <div>
+        <form>
+          <label>Nom</label>
+          <input type="text" />
+          <label>Prénom</label>
+          <input type="text" />
+          <label>Age</label>
+          <input type="number" />
+          <label>Sexe</label>
+          <input type="radio" class="homme" name="sexe" />
+          <label for="homme">Homme</label>
+          <input type="radio" class="femme" name="sexe" />
+          <label for="femme">Femme</label>
+          <label name="select-profession">Profession</label>
+          <select name="profession" class="select-profession">
+            <option value="">-- Sélectionner --</option>
+            <option value="etudiant">Etudiant(e)</option>
+            <option value="developpeur">Développeur(se)</option>
+            <option value="enseignant">Enseignant(e)</option>
+            <option value="designer">Designer</option>
+            <option value="autre">Autre</option>
+          </select>
+          <label name="select-region">Région</label>
+          <select name="region" class="select-region">
+            <option value="">-- Sélectionner --</option>
+            <option value="ile-de-france">Île-de-France</option>
+            <option value="paca">Provence-Alpes-Côte d’Azur</option>
+            <option value="bretagne">Bretagne</option>
+            <option value="grand-est">Grand Est</option>
+            <option value="aura">Auvergne-Rhône-Alpes</option>
+          </select>
+          <label>Hobbies</label>
+          <input type="checkbox" class="lecture" />
+          <label for="lecture">Lecture</label>
+          <input type="checkbox" class="sport" />
+          <label for="sport">Sport</label>
+          <input type="checkbox" class="jeux-video" />
+          <label for="jeux-video">Jeux vidéo</label>
+          <input type="checkbox" class="musique" />
+          <label for="musique">Musique</label>
+          <input type="checkbox" class="voyage" />
+          <label for="voyage">Voyage</label>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
