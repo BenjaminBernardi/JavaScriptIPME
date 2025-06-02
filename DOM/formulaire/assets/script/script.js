@@ -11,6 +11,7 @@ let displayCard = document.querySelector(".card");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  displayCard.innerHTML = "";
   createCard();
 });
 
@@ -25,33 +26,41 @@ function createCard() {
 }
 
 function createName() {
-  let newP = document.createElement("p");
-  newP.innerHTML = inputFirstName.value + " " + inputLastName.value;
-  displayCard.append(newP);
+  if (inputFirstName.value.length > 0 && inputLastName.value.length > 0) {
+    let newP = document.createElement("p");
+    newP.classList.add("card-argument");
+    newP.innerHTML = inputFirstName.value + " " + inputLastName.value;
+    displayCard.append(newP);
+  }
 }
 
 function createAge() {
   if (inputAge.value > 0) {
     let newP = document.createElement("p");
+    newP.classList.add("card-argument");
     newP.innerHTML = "Age : " + inputAge.value + " ans";
     displayCard.append(newP);
   }
 }
 
 function createGenre() {
-  let newP = document.createElement("p");
-  let genreLength = inputGenre.length;
-  for (i = 0; i < genreLength; i++) {
-    if (inputGenre[i].checked) {
-      newP.innerHTML = "Sexe : " + inputGenre[i].value;
+  if (inputGenre[0].checked || inputGenre[1].checked) {
+    let newP = document.createElement("p");
+    newP.classList.add("card-argument");
+    let genreLength = inputGenre.length;
+    for (i = 0; i < genreLength; i++) {
+      if (inputGenre[i].checked) {
+        newP.innerHTML = "Sexe : " + inputGenre[i].value;
+      }
     }
+    displayCard.append(newP);
   }
-  displayCard.append(newP);
 }
 
 function createProfession() {
   if (inputProfession.value.length > 0) {
     let newP = document.createElement("p");
+    newP.classList.add("card-argument");
     newP.innerHTML = "Profession : " + inputProfession.value;
     displayCard.append(newP);
   }
@@ -60,6 +69,7 @@ function createProfession() {
 function createRegion() {
   if (inputRegion.value.length > 0) {
     let newP = document.createElement("p");
+    newP.classList.add("card-argument");
     newP.innerHTML = "Région : " + inputRegion.value;
     displayCard.append(newP);
   }
@@ -68,6 +78,7 @@ function createRegion() {
 function createHobbies() {
   if (checkboxNotEmpty()) {
     let newP = document.createElement("p");
+    newP.classList.add("card-argument");
     newP.innerHTML = "Hobbies : ";
     let hobbiesLength = inputHobbies.length;
     for (i = 0; i < hobbiesLength; i++) {
@@ -83,6 +94,7 @@ function createHobbies() {
 function createLinkedIn() {
   if (inputLinkedIn.value.length > 0) {
     let newP = document.createElement("p");
+    newP.classList.add("card-argument");
     newP.innerHTML = "LinkedIn : ";
     let newA = document.createElement("a");
     newA.innerHTML = inputLinkedIn.value;
