@@ -12,8 +12,6 @@ const playerOne = {
 };
 
 const playerTwo = {
-  name: inputSorcier2.value,
-  house: inputMaison2.value,
   maxHP: 200,
   actualHP: 200,
 };
@@ -46,33 +44,25 @@ function battleStatus() {
   displayBattleStatus.append(newH2);
 
   while(playerOne.actualHP > 0 && playerTwo.actualHP > 0) {
-    attackPlayerTwo();
+    attackPlayer(playerOne, playerTwo);
     if (playerTwo.actualHP > 0) {
-        attackPlayerOne();
+        attackPlayer(playerTwo, playerOne);
     }
   }
 }
 
-function attackPlayerTwo() {
-    let damage1 = Math.floor(Math.random() * 10) + 5;
-    if (playerTwo.actualHP > damage1) {
-        playerTwo.actualHP -= damage1;
-        console.log("Duel : " + playerOne.name + " attaque " + playerTwo.name + " pour " + damage1 + " dégâts. Il reste " + playerTwo.actualHP + " PV à " + playerTwo.name + ".");
+function attackPlayer(attacker, defender){
+    let damage = Math.floor(Math.random() * 10) + 5;
+    let newP1 = document.createElement("p");
+    if (defender.actualHP > damage) {
+        defender.actualHP -= damage;
+        newP1.innerHTML = "Duel : " + attacker.name + " attaque " + defender.name + " pour " + damage + " dégâts. Il reste " + defender.actualHP + " PV à " + defender.name + ".";
+        displayBattleStatus.append(newP1);
     } else {
-        playerTwo.actualHP = 0;
-        console.log("Duel : " + playerOne.name + " attaque " + playerTwo.name + " pour " + damage1 + " dégâts. Il reste " + playerTwo.actualHP + " PV à " + playerTwo.name + ".");
-        console.log(playerOne.name + " (" + playerOne.house + ") a vaincu " + playerTwo.name + " (" + playerTwo.house + ") !");
-    }
-}
-
-function attackPlayerOne() {
-    let damage2 = Math.floor(Math.random() * 10) + 5;
-    if (playerOne.actualHP > damage2) {
-        playerOne.actualHP -= damage2;
-        console.log("Duel : " + playerTwo.name + " attaque " + playerOne.name + " pour " + damage2 + " dégâts. Il reste " + playerOne.actualHP + " PV à " + playerOne.name + ".");
-    } else {
-        playerOne.actualHP = 0;
-        console.log("Duel : " + playerTwo.name + " attaque " + playerOne.name + " pour " + damage2 + " dégâts. Il reste " + playerOne.actualHP + " PV à " + playerOne.name + ".");
-        console.log(playerTwo.name + " (" + playerTwo.house + ") a vaincu " + playerOne.name + " (" + playerOne.house + ") !");
+        let newP2 = document.createElement("p");
+        defender.actualHP = 0;
+        newP1.innerHTML = "Duel : " + attacker.name + " attaque " + defender.name + " pour " + damage + " dégâts. Il reste " + defender.actualHP + " PV à " + defender.name + ".";
+        newP2.innerHTML = attacker.name + " (" + attacker.house + ") a vaincu " + defender.name + " (" + defender.house + ") !";
+        displayBattleStatus.append(newP1, newP2);
     }
 }
