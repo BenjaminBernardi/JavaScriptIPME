@@ -5,6 +5,7 @@ let inputSorcier2 = document.querySelector(".nom-sorcier-2");
 let inputMaison2 = document.querySelector(".maison-sorcier-2");
 let displayPlayersStatus = document.querySelector(".players-status");
 let displayBattleStatus = document.querySelector(".battle-status");
+let tour = 1;
 
 const playerOne = {
   maxHP: 200,
@@ -18,6 +19,11 @@ const playerTwo = {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  displayPlayersStatus.innerHTML = "";
+  displayBattleStatus.innerHTML = "";
+  playerOne.actualHP = playerOne.maxHP;
+  playerTwo.actualHP = playerTwo.maxHP;
+  tour = 1;
   playerOne.name = inputSorcier1.value;
   playerOne.house = inputMaison1.value;
   playerTwo.name = inputSorcier2.value;
@@ -43,26 +49,37 @@ function battleStatus() {
   newH2.innerHTML = "Historique du duel :";
   displayBattleStatus.append(newH2);
 
-  while(playerOne.actualHP > 0 && playerTwo.actualHP > 0) {
+  while (playerOne.actualHP > 0 && playerTwo.actualHP > 0) {
     attackPlayer(playerOne, playerTwo);
     if (playerTwo.actualHP > 0) {
-        attackPlayer(playerTwo, playerOne);
+      attackPlayer(playerTwo, playerOne);
     }
   }
 }
 
-function attackPlayer(attacker, defender){
-    let damage = Math.floor(Math.random() * 10) + 5;
-    let newP1 = document.createElement("p");
-    if (defender.actualHP > damage) {
-        defender.actualHP -= damage;
-        newP1.innerHTML = "Duel : " + attacker.name + " attaque " + defender.name + " pour " + damage + " dégâts. Il reste " + defender.actualHP + " PV à " + defender.name + ".";
-        displayBattleStatus.append(newP1);
-    } else {
-        let newP2 = document.createElement("p");
-        defender.actualHP = 0;
-        newP1.innerHTML = "Duel : " + attacker.name + " attaque " + defender.name + " pour " + damage + " dégâts. Il reste " + defender.actualHP + " PV à " + defender.name + ".";
-        newP2.innerHTML = attacker.name + " (" + attacker.house + ") a vaincu " + defender.name + " (" + defender.house + ") !";
-        displayBattleStatus.append(newP1, newP2);
-    }
+function attackPlayer(attacker, defender) {
+  let damage = Math.floor(Math.random() * 10) + 5;
+  let newP1 = document.createElement("p");
+  defender.actualHP -= damage;
+  newP1.innerHTML =
+    "Tour " + tour + " : " +
+    attacker.name +
+    " attaque " +
+    defender.name +
+    " pour " +
+    damage +
+    " dégâts. Il reste " +
+    defender.actualHP +
+    " PV à " +
+    defender.name +
+    ".";
+  displayBattleStatus.append(newP1);
+  tour++;
+
+  if(defender.actualHP <= 0){
+    let newP2 = document.createElement("p");
+    defender.actualHP = 0;
+    newP2.innerHTML = attacker.name + " (" + attacker.house + ") a vaincu " + defender.name + " (" + defender.house + ") en " + tour + " tours !";
+    displayBattleStatus.append(newP2);
+  }
 }
