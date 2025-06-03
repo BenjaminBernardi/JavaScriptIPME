@@ -17,6 +17,8 @@ const playerTwo = {
   actualHP: 200,
 };
 
+// playerTurn = playerOne;
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   displayPlayersStatus.innerHTML = "";
@@ -49,12 +51,25 @@ function battleStatus() {
   newH2.innerHTML = "Historique du duel :";
   displayBattleStatus.append(newH2);
 
-  while (playerOne.actualHP > 0 && playerTwo.actualHP > 0) {
+  let intervalFight = setInterval(() => {
+
+    // if(playerTurn === playerOne){
+    //   attackPlayer(playerOne, playerTwo);
+    //   playerTurn = playerTwo;
+    // } else{
+    //  attackPlayer(playerTwo, playerOne);
+    //  playerTurn = playerOne; 
+    // }
+
     attackPlayer(playerOne, playerTwo);
     if (playerTwo.actualHP > 0) {
       attackPlayer(playerTwo, playerOne);
     }
-  }
+
+    if (playerOne.actualHP <= 0 || playerTwo.actualHP <= 0) {
+      clearInterval(intervalFight);
+    }
+  }, 1000);
 }
 
 function attackPlayer(attacker, defender) {
@@ -65,7 +80,9 @@ function attackPlayer(attacker, defender) {
     defender.actualHP = 0;
   }
   newP1.innerHTML =
-    "Tour " + tour + " : " +
+    "Tour " +
+    tour +
+    " : " +
     attacker.name +
     " attaque " +
     defender.name +
@@ -78,10 +95,20 @@ function attackPlayer(attacker, defender) {
     ".";
   displayBattleStatus.append(newP1);
 
-  if(defender.actualHP <= 0){
+  if (defender.actualHP <= 0) {
     let newP2 = document.createElement("p");
     defender.actualHP = 0;
-    newP2.innerHTML = attacker.name + " (" + attacker.house + ") a vaincu " + defender.name + " (" + defender.house + ") en " + tour + " tours !";
+    newP2.innerHTML =
+      attacker.name +
+      " (" +
+      attacker.house +
+      ") a vaincu " +
+      defender.name +
+      " (" +
+      defender.house +
+      ") en " +
+      tour +
+      " tours !";
     displayBattleStatus.append(newP2);
   }
   tour++;
