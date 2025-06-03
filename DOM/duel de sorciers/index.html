@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="./assets/script/script.js"></script>
     <title>Duel de Sorciers</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
+      <form class="formulaire-sorciers">
+        <h1>Duel de Sorciers</h1>
+        <div>
+          <label>Nom du sorcier 1</label>
+          <input type="text" class="nom-sorcier-1" required />
+          <label>Maison du sorcier 1</label>
+          <select name="maison-sorcier-1" class="maison-sorcier-1">
+            <option value="Gryffondor">Gryffondor</option>
+            <option value="Serpentard">Serpentard</option>
+            <option value="Serdaigle">Serdaigle</option>
+            <option value="Poufsouffle">Poufsouffle</option>
+          </select>
+        </div>
+        <div>
+          <label>Nom du sorcier 2</label>
+          <input type="text" class="nom-sorcier-2" required />
+          <label>Maison du sorcier 2</label>
+          <select name="maison-sorcier-2" class="maison-sorcier-2">
+            <option value="Gryffondor">Gryffondor</option>
+            <option value="Serpentard">Serpentard</option>
+            <option value="Serdaigle">Serdaigle</option>
+            <option value="Poufsouffle">Poufsouffle</option>
+          </select>
+        </div>
+        <div>
+          <input class="lancer-le-duel" type="submit" value="Lancer le duel" />
+        </div>
+      </form>
+      <section>
         
+      </section>
     </main>
-</body>
+  </body>
 </html>
