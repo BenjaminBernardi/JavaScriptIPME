@@ -61,6 +61,9 @@ function attackPlayer(attacker, defender) {
   let damage = Math.floor(Math.random() * 10) + 5;
   let newP1 = document.createElement("p");
   defender.actualHP -= damage;
+  if (defender.actualHP < 0) {
+    defender.actualHP = 0;
+  }
   newP1.innerHTML =
     "Tour " + tour + " : " +
     attacker.name +
@@ -74,7 +77,6 @@ function attackPlayer(attacker, defender) {
     defender.name +
     ".";
   displayBattleStatus.append(newP1);
-  tour++;
 
   if(defender.actualHP <= 0){
     let newP2 = document.createElement("p");
@@ -82,4 +84,5 @@ function attackPlayer(attacker, defender) {
     newP2.innerHTML = attacker.name + " (" + attacker.house + ") a vaincu " + defender.name + " (" + defender.house + ") en " + tour + " tours !";
     displayBattleStatus.append(newP2);
   }
+  tour++;
 }
