@@ -46,23 +46,29 @@ function battleStatus() {
   displayBattleStatus.append(newH2);
 
   while(playerOne.actualHP > 0 && playerTwo.actualHP > 0) {
-    attack();
+    attackPlayerTwo();
+    if (playerTwo.actualHP > 0) {
+        attackPlayerOne();
+    }
   }
 }
 
-function attack() {
+function attackPlayerTwo() {
     let damage1 = Math.floor(Math.random() * 10) + 5;
-    playerTwo.actualHP -= damage1;
-    if (playerTwo.actualHP > 0 && playerOne.actualHP > 0) {
+    if (playerTwo.actualHP > damage1) {
+        playerTwo.actualHP -= damage1;
         console.log("Duel : " + playerOne.name + " attaque " + playerTwo.name + " pour " + damage1 + " dégâts. Il reste " + playerTwo.actualHP + " PV à " + playerTwo.name + ".");
-    } else if (playerTwo.actualHP <= 0 && playerOne.actualHP > 0) {
+    } else {
         playerTwo.actualHP = 0;
         console.log("Duel : " + playerOne.name + " attaque " + playerTwo.name + " pour " + damage1 + " dégâts. Il reste " + playerTwo.actualHP + " PV à " + playerTwo.name + ".");
         console.log(playerOne.name + " (" + playerOne.house + ") a vaincu " + playerTwo.name + " (" + playerTwo.house + ") !");
     }
+}
+
+function attackPlayerOne() {
     let damage2 = Math.floor(Math.random() * 10) + 5;
-    playerOne.actualHP -= damage2;
-    if (playerOne.actualHP > 0) {
+    if (playerOne.actualHP > damage2) {
+        playerOne.actualHP -= damage2;
         console.log("Duel : " + playerTwo.name + " attaque " + playerOne.name + " pour " + damage2 + " dégâts. Il reste " + playerOne.actualHP + " PV à " + playerOne.name + ".");
     } else {
         playerOne.actualHP = 0;
