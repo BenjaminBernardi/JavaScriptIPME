@@ -1,11 +1,27 @@
 let form = document.querySelector(".formulaire");
+let inputAnimalName = document.querySelector(".nom-animal");
+let inputAnimalBreed = document.querySelector(".race");
+let displayAnimals = document.querySelector(".display-animals");
+let releaseAnimal = document.querySelector(".relacher");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
+form.addEventListener("submit", () => {
+  localStorage.setItem("animal_name", inputAnimalName.value);
+  localStorage.setItem("animal_breed", inputAnimalBreed.value);
 });
 
+function displayAnimalCard() {
+    let newP1 = document.createElement("p");
+    newP1.innerHTML = localStorage.getItem("animal_name");
+    let newP2 = document.createElement("p");
+    newP2.innerHTML = localStorage.getItem("animal_breed");
+    displayAnimals.append(newP1, newP2);
+}
 
+releaseAnimal.addEventListener("click", () => {
+    displayAnimals.innerHTML = "";
+});
+
+displayAnimalCard();
 
 /*
 // setItem
