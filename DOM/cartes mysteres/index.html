@@ -7,9 +7,21 @@
     <title>Cartes mystères</title>
   </head>
   <body>
-    <form>
+    <form class="formulaire">
       <h1>Cartes Mystères - Crée ta collection magique</h1>
-      <input type="text" class="nom-carte" required />
+      <input type="text" class="nom-carte" placeholder="Nom de la carte" required />
+      <select name="type" class="type">
+        <option value="">-- Type --</option>
+        <option value="Feu">Feu</option>
+        <option value="Eau">Eau</option>
+        <option value="Terre">Terre</option>
+        <option value="Air">Air</option>
+        <option value="Magie">Magie</option>
+      </select>
+      <input type="text" class="pouvoir-special" placeholder="Pouvoir spécial" required />
+      <input type="submit" class="ajouter-carte" value="Ajouter">
+      <input type="button" class="effacer-cartes" value="X">
     </form>
+    <div class="afficher-cartes"></div>
   </body>
 </html>
