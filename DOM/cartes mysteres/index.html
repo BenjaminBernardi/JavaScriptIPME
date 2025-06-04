@@ -3,24 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script defer src="./assets/script/script.js"></script>
     <title>Cartes mystères</title>
   </head>
   <body>
     <form class="formulaire">
       <h1>Cartes Mystères - Crée ta collection magique</h1>
-      <input type="text" class="nom-carte" placeholder="Nom de la carte" required />
-      <select name="type" class="type">
-        <option value="">-- Type --</option>
-        <option value="Feu">Feu</option>
-        <option value="Eau">Eau</option>
-        <option value="Terre">Terre</option>
-        <option value="Air">Air</option>
-        <option value="Magie">Magie</option>
-      </select>
-      <input type="text" class="pouvoir-special" placeholder="Pouvoir spécial" required />
-      <input type="submit" class="ajouter-carte" value="Ajouter">
-      <input type="button" class="effacer-cartes" value="X">
+      <div class="elements-input">
+        <input
+          type="text"
+          class="nom-carte"
+          placeholder="Nom de la carte"
+          required
+        />
+        <select name="type" class="type">
+          <option value="">-- Type --</option>
+          <option value="Feu">Feu</option>
+          <option value="Eau">Eau</option>
+          <option value="Terre">Terre</option>
+          <option value="Air">Air</option>
+          <option value="Magie">Magie</option>
+        </select>
+        <input
+          type="text"
+          class="pouvoir-special"
+          placeholder="Pouvoir spécial"
+          required
+        />
+        <input type="submit" class="ajouter-carte" value="Ajouter" />
+        <input type="button" class="effacer-cartes" value="X" />
+      </div>
     </form>
     <div class="afficher-cartes"></div>
   </body>

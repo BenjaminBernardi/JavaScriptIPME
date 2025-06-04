@@ -1,0 +1,24 @@
+h1 {
+    text-align: center;
+}
+
+.elements-input, .afficher-cartes {
+  margin: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+}
+
+.ajouter-carte {
+    background-color: rgb(48, 48, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.effacer-cartes {
+    background-color: rgb(252, 45, 45);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
