@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./assets/script/script.js"></script>
+    <title>Adopte ton animal</title>
+  </head>
+  <body>
+    <form class="formulaire">
+      <h1>Adopte ton animal</h1>
+      <div>
+        <label>Nom de l'animal :</label>
+        <input type="text" class="nom-animal" required />
+      </div>
+      <div>
+        <label>Race :</label>
+        <select name="race" class="race">
+          <option value="Chat">Chat</option>
+          <option value="Chien">Chien</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Lama">Lama</option>
+        </select>
+      </div>
+      <div>
+        <input class="adopter" type="submit" value="Adopter">
+        <input class="relacher" type="button" value="Relâcher">
+      </div>
+    </form>
+  </body>
+</html>

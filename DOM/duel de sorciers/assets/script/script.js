@@ -56,7 +56,7 @@ function battleStatus() {
     // if(playerTurn === playerOne){
     //   attackPlayer(playerOne, playerTwo);
     //   playerTurn = playerTwo;
-    // } else{
+    // } else {
     //  attackPlayer(playerTwo, playerOne);
     //  playerTurn = playerOne; 
     // }
