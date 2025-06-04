@@ -7,6 +7,7 @@ let deleteAllCards = document.querySelector(".effacer-cartes");
 
 let arrayDecoded;
 let array;
+
 getFromStorage(); // recup du local le tableau (si tableau null, initialiser un tableau vide)
 if (arrayDecoded !== null) {
   array = arrayDecoded;
@@ -63,8 +64,14 @@ function emptyCollectionMessage() {
   displayCards.append(newP);
 }
 
-deleteAllCards.addEventListener("click", () => {
+function deleteConfirmation() {
+  confirm("Etes vous sûr de vouloir effacer votre collection ?");
   localStorage.clear("array");
   displayCards.innerHTML = "";
   emptyCollectionMessage();
+  array = [];
+}
+
+deleteAllCards.addEventListener("click", () => {
+  deleteConfirmation();
 });
