@@ -38,13 +38,18 @@ function createCocktail(cocktail) {
     let newDiv = document.createElement("div");
     let newH3 = document.createElement("h3");
     let newPIngred = document.createElement("p");
-    let newPInstruct = document.createElement("p");
+    
     let newImg = document.createElement("img");
+    newDiv.classList.add("card");
     newH3.innerHTML = cocktail[i].strDrink;
     newPIngred.innerHTML = ingredientsList(cocktail[i]);
-    newPInstruct.innerHTML = cocktail[i].strInstructionsFR;
     newImg.src = cocktail[i].strDrinkThumb;
-    newDiv.append(newImg, newH3, newPIngred, newPInstruct);
+    newDiv.append(newImg, newH3, newPIngred);
+    if (cocktail[i].strInstructionsFR !== null) {
+        let newPInstruct = document.createElement("p");
+        newPInstruct.innerHTML = cocktail[i].strInstructionsFR;
+        newDiv.append(newPInstruct);
+    }   
     displayCocktails.append(newDiv);
   }
 }
