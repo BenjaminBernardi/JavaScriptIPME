@@ -1,22 +1,100 @@
 let form = document.querySelector("form");
 let inputSearch = document.querySelector(".nom-cocktail");
-let displayCocktails = document.querySelector(".afficher-cocktails")
+let randomCocktail = document.querySelector(".cocktail-aleatoire");
+let deleteResults = document.querySelector(".effacer-resultats");
+let displayCocktails = document.querySelector(".afficher-cocktails");
 
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  fetch(
+    "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+      inputSearch.value
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      displayCocktails.innerHTML = "";
+      createCocktail(data.drinks);
+    });
+});
+
+randomCocktail.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(inputSearch.value);
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + inputSearch.value).then((response) => {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php").then((response) => {
         return response.json();
     }).then((data) => {
-        console.log(data);
-        displayCocktails.innerHTML = ""
-        let newDiv = document.createElement("div");
-        let newH3 = document.createElement("h3");
-        let newP = document.createElement("p");
-        for (let i = 0; i < data.drinks.length; i++) {
-            console.log(data.drinks[i].strDrink);
-            console.log(data.drinks[i].strIngredient1);
-            console.log(data.drinks[i].strInstructionsFR);
-        }
+        displayCocktails.innerHTML = "";
+        createCocktail(data.drinks);
     })
 });
+
+deleteResults.addEventListener("click", () => {
+    displayCocktails.innerHTML = "";
+});
+
+function createCocktail(cocktail) {
+  for (let i = 0; i < cocktail.length; i++) {
+    let newDiv = document.createElement("div");
+    let newH3 = document.createElement("h3");
+    let newPIngred = document.createElement("p");
+    let newPInstruct = document.createElement("p");
+    let newImg = document.createElement("img");
+    newH3.innerHTML = cocktail[i].strDrink;
+    newPIngred.innerHTML = ingredientsList(cocktail[i]);
+    newPInstruct.innerHTML = cocktail[i].strInstructionsFR;
+    newImg.src = cocktail[i].strDrinkThumb;
+    newDiv.append(newImg, newH3, newPIngred, newPInstruct);
+    displayCocktails.append(newDiv);
+  }
+}
+
+function ingredientsList(cocktail) {
+  let ingredList = "Ingrédients : ";
+  if (cocktail.strIngredient1 !== null) {
+    ingredList += cocktail.strIngredient1;
+  }
+  if (cocktail.strIngredient2 !== null) {
+    ingredList += " / " + cocktail.strIngredient2;
+  }
+  if (cocktail.strIngredient3 !== null) {
+    ingredList += " / " + cocktail.strIngredient3;
+  }
+  if (cocktail.strIngredient4 !== null) {
+    ingredList += " / " + cocktail.strIngredient4;
+  }
+  if (cocktail.strIngredient5 !== null) {
+    ingredList += " / " + cocktail.strIngredient5;
+  }
+  if (cocktail.strIngredient6 !== null) {
+    ingredList += " / " + cocktail.strIngredient6;
+  }
+  if (cocktail.strIngredient7 !== null) {
+    ingredList += " / " + cocktail.strIngredient7;
+  }
+  if (cocktail.strIngredient8 !== null) {
+    ingredList += " / " + cocktail.strIngredient8;
+  }
+  if (cocktail.strIngredient9 !== null) {
+    ingredList += " / " + cocktail.strIngredient9;
+  }
+  if (cocktail.strIngredient10 !== null) {
+    ingredList += " / " + cocktail.strIngredient10;
+  }
+  if (cocktail.strIngredient11 !== null) {
+    ingredList += " / " + cocktail.strIngredient11;
+  }
+  if (cocktail.strIngredient12 !== null) {
+    ingredList += " / " + cocktail.strIngredient12;
+  }
+  if (cocktail.strIngredient13 !== null) {
+    ingredList += " / " + cocktail.strIngredient13;
+  }
+  if (cocktail.strIngredient14 !== null) {
+    ingredList += " / " + cocktail.strIngredient14;
+  }
+  if (cocktail.strIngredient15 !== null) {
+    ingredList += " / " + cocktail.strIngredient15;
+  }
+  return ingredList;
+}
