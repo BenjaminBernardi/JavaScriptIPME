@@ -26,6 +26,7 @@ form.addEventListener("submit", (e) => {
     .then((data) => {
       if (data.length !== 0) {
         console.log(data[0]);
+        inputSearch.value = data[0].display_name;
         marker = L.marker([data[0].lat, data[0].lon]).addTo(map);
         map.setView([data[0].lat, data[0].lon], 13);
         markersArray.push(marker);
